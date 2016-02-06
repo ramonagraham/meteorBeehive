@@ -36,9 +36,9 @@ if (Meteor.isClient) {
           
           
           if (hiveText.length > 0 &&
-              observeDateText > 0 &&
+              observeDateText.length > 0 &&
               durationText.length > 0 &&
-              miteCountText > 0 ) {
+              miteCountText.length > 0 ) {
           
             Observations.insert(
                 {
