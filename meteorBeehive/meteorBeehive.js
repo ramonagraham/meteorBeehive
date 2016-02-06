@@ -35,10 +35,10 @@ if (Meteor.isClient) {
           var miteCountText = miteCountBox.val();
           
           
-         // if (hiveText.length > 0 &&
-          //    observeDateText > 0 &&
-          //    durationText.length > 0 &&
-          //    miteCountText > 0 ) {
+          if (hiveText.length > 0 &&
+              observeDateText > 0 &&
+              durationText.length > 0 &&
+              miteCountText > 0 ) {
           
             Observations.insert(
                 {
@@ -54,12 +54,12 @@ if (Meteor.isClient) {
             observeDate.val("");
             durationBox.val("");
             miteCountBox.val("");
-          //}
-         // else{
-       //      alert ("Hive Name, observation date, duration and mite count are all required.");
-          //  console.log(hiveBox);
-          //  hiveBox.classList.add("has-warning"); //style.backgroundColor = "red";
-        //  }
+          }
+          else{
+             alert ("Hive Name, observation date, duration and mite count are all required.");
+            console.log(hiveBox);
+            hiveBox.classList.add("has-warning"); //style.backgroundColor = "red";
+          }
           
           
          
