@@ -1,42 +1,64 @@
 
 <body>
-  <h1>Welcome to the Mite Count Collection</h1>
-  
-  {{ >observe }}
  
 </body>
 
 
+  <template name="layout">
+    <div class="container">
+      <h1>Welcome to the Mite Count Collection</h1>
+    
+     {{ >yield }}
+
+    </div>
+  </template>
+
   <template name="observe">
-    <form>
-    <div class="form-group">
-      <label id="hive" for="hiveName">Hive Name</label>
-      <input type="text" class="form-control" name="hiveName"><br><br>
+    <div class="container">
+      <form>
+      <div class="form-group">
+        <label id="hive" for="hiveName">Hive Name</label>
+        <input type="text" class="form-control" name="hiveName"><br><br>
+      </div>
+      
+      <div class="form-group">
+        <label id="observe" for="observationDate">Observation Date</label>
+        <input type="text" class="form-control" name="observationDate"><br><br>
+      </div>
+      
+      <div class="form-group">
+        <label id="dur" for="duration">Duration</label>
+        <input type="text" class="form-control" name="duration"><br><br>
+      </div>
+      
+      <div class="form-group">
+        <label id="count" for="miteCount">Mite Count</label>
+        <input type="text" class="form-control" name="miteCount"><br><br>
+      </div>
+      
+      
+      <button type="submit">Submit Observation</button>
+      
+      <!--  below, this is how to write a foreach loop in spacebars -->
+      </form>
     </div>
+      
     
-    <div class="form-group">
-      <label id="observe" for="observationDate">Observation Date</label>
-      <input type="text" class="form-control" name="observationDate"><br><br>
-    </div>
-    
-    <div class="form-group">
-      <label id="dur" for="duration">Duration</label>
-      <input type="text" class="form-control" name="duration"><br><br>
-    </div>
-    
-    <div class="form-group">
-      <label id="count" for="miteCount">Mite Count</label>
-      <input type="text" class="form-control" name="miteCount"><br><br>
-    </div>
-    
-    
-    <button type="submit">Submit Observation</button>
-    
-    <!--  below, this is how to write a foreach loop in spacebars -->
-  </form>
-    
-    {{#each observation}}    
-      <p>{{hiveName}} {{observationDate}} {{duration}} {{miteCount}} - {{createdOn}} </p>
-    
+  </template>
+  
+  <template name="admin"> 
+    {{#each observation}}   
+      <p><a href="{{pathFor route='observe.show'}}"></a>
+        {{hiveName}} {{observationDate}} {{duration}} {{miteCount}} - {{createdOn}} </p>
+
     {{/each}}
+    
+    
+  </template>
+ 
+  
+  <template name="hive">
+    <p><a href="{{pathFor route='collect.show'}}">
+          <strong>{{hiveName}}</strong> {{observationDate}} {{duration}}  {{miteCount}} - {{createdOn}}
+      </a></p>
   </template>
