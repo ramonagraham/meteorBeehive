@@ -58,7 +58,9 @@
  
   
   <template name="hive">
+    {{#each observations}}
     <p><a href="{{pathFor route='collect.show'}}">
           <strong>{{hiveName}}</strong> {{observationDate}} {{duration}}  {{miteCount}} - {{createdOn}}
       </a></p>
+    {{/each }}
   </template>
